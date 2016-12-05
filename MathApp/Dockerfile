@@ -1,5 +1,12 @@
 FROM golang:1.7
 
+ARG devUid=""
+ARG devGid=""
+
+RUN if [ -n "$devGid" ] && [ "$devGid" -ge 500 ]; then groupadd -r -g "$devGid" dev; fi
+RUN if [ -n "$devUid" ] && [ "$devUid" -ge 500 ]; then useradd -r -g "$devGid" -u "$devUid" dev; fi
+RUN if [ -n "$devUid" ] && [ "$devUid" -ge 500 ]; then chown -Rv dev:dev /go; fi
+
 # Install beego and the bee dev tool
 RUN go get github.com/astaxie/beego && go get github.com/beego/bee
 

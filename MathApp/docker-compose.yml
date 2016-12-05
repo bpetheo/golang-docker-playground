@@ -1,7 +1,12 @@
 version: '2'
 services:
     web:
-        build: .
+        build:
+            context: .
+            args:
+                devUid: 1000
+                devGid: 1000
+        user: dev
         ports:
             - 8080
         volumes:
