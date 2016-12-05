@@ -1,0 +1,11 @@
+version: '2'
+services:
+    web:
+        ports:
+            - 17005:8080
+    db:
+        ports:
+            - 17007:3306
+    pma:
+        ports:
+            - 17006:80
