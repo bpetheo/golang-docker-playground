@@ -8,7 +8,9 @@ RUN if [ -n "$devUid" ] && [ "$devUid" -ge 500 ]; then useradd -r -g "$devGid" -
 RUN if [ -n "$devUid" ] && [ "$devUid" -ge 500 ]; then chown -Rv dev:dev /go; fi
 
 # Install beego and the bee dev tool
-RUN go get github.com/astaxie/beego && go get github.com/beego/bee
+RUN go get github.com/go-sql-driver/mysql
+RUN go get github.com/astaxie/beego
+RUN go get github.com/beego/bee
 
 # Expose the application on port 8080
 EXPOSE 8080
