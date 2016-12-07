@@ -9,6 +9,8 @@ services:
         user: dev
         ports:
             - 8080
+        depends_on:
+            - db
         volumes:
             - .:/go/src/app
         working_dir:
@@ -29,7 +31,7 @@ services:
         image: phpmyadmin/phpmyadmin
         ports:
             - 80
-        links:
+        depends_on:
             - db
 volumes:
     dbdata: {}
